@@ -15,10 +15,10 @@ class MemGap
 
 public:
     MemGap(void);
-    void __fastcall Init(unsigned long ulStart, unsigned long ulEnd);
-    int __fastcall Size(void);
-    unsigned long __fastcall Start(int index);
-    unsigned long __fastcall End(int index);
-    void __fastcall AddGap(unsigned long ulStart, unsigned long ulEnd);
+    void Init(unsigned long ulStart, unsigned long ulEnd);
+    int  Size(void);
+    unsigned long Start(int index);
+    unsigned long End(int index);
+    void AddGap(unsigned long ulStart, unsigned long ulEnd);
 };
 

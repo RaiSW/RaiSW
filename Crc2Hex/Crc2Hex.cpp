@@ -4,6 +4,7 @@
 #include <string>
 #include "Lib.h"
 #include "IntelHex.h"
+#include "MemGap.h"
 
 using namespace std;
 
@@ -120,7 +121,7 @@ bool iGetFileAndBuildCRC(string fileSrc, bool bQuiet, tpCheckData pData)
     // Hex-File einlesen, Lizenzschlüssel suchen und Stelle merken, sowie
     // CRC16 und ADD16-Checksumme bilden
     char* mem = new char[FLASH_SIZE];
-  //todo  MemGap cMemList;
+    MemGap cMemList;
   //  CRC16 clCRC16;
   //  AddChecksum clAdd16;
     int found;
@@ -176,11 +177,11 @@ bool iGetFileAndBuildCRC(string fileSrc, bool bQuiet, tpCheckData pData)
                 //cout << s.c_str() << endl;
             }
             // Liste des Speicherbereich aufbauen, über den die Checksummen gebildet werden sollen
-            //todo cMemList.Init(*((unsigned long*)(mem + ulPointer + OFFS_FLASH_START)),
-            //    *((unsigned long*)(mem + ulPointer + OFFS_FLASH_END)));
-            //cMemList.AddGap(*((unsigned long*)(mem + ulPointer + OFFS_FLASH_GAP_START)),
-            //    *((unsigned long*)(mem + ulPointer + OFFS_FLASH_GAP_END)));
-            //cMemList.AddGap(ulPointer + OFFS_ADD32, ulPointer + OFFS_ADD32 + 5);
+            cMemList.Init(*((unsigned long*)(mem + ulPointer + OFFS_FLASH_START)),
+                          *((unsigned long*)(mem + ulPointer + OFFS_FLASH_END)));
+            cMemList.AddGap(*((unsigned long*)(mem + ulPointer + OFFS_FLASH_GAP_START)),
+                            *((unsigned long*)(mem + ulPointer + OFFS_FLASH_GAP_END)));
+            cMemList.AddGap(ulPointer + OFFS_ADD32, ulPointer + OFFS_ADD32 + 5);
 
             // Über alle Elemente der Speicherbereichsliste
             //todo for (i = 0; i < cMemList.Size(); i++)

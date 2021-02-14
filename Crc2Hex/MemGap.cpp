@@ -5,7 +5,7 @@ MemGap::MemGap(void)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall MemGap::Init(unsigned long ulStart, unsigned long ulEnd)
+void MemGap::Init(unsigned long ulStart, unsigned long ulEnd)
 {
     memRange.ulStart = ulStart;
     memRange.ulEnd = ulEnd;
@@ -14,25 +14,25 @@ void __fastcall MemGap::Init(unsigned long ulStart, unsigned long ulEnd)
 }
 //---------------------------------------------------------------------------
 
-int __fastcall MemGap::Size(void)
+int MemGap::Size(void)
 {
     return(vMemRangeList.size());
 }
 //---------------------------------------------------------------------------
 
-unsigned long __fastcall MemGap::Start(int index)
+unsigned long MemGap::Start(int index)
 {
     return(vMemRangeList[index].ulStart);
 }
 //---------------------------------------------------------------------------
 
-unsigned long __fastcall MemGap::End(int index)
+unsigned long MemGap::End(int index)
 {
     return(vMemRangeList[index].ulEnd);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall MemGap::AddGap(unsigned long ulStart, unsigned long ulEnd)
+void MemGap::AddGap(unsigned long ulStart, unsigned long ulEnd)
 {
     tMemRange memEintrag;
     unsigned int i;
